@@ -1,0 +1,309 @@
+/* ===================================
+   Dev Pixel Portfolio - Scroll Animations
+   ================================= */
+
+/* Base Animation States - Hidden by default */
+.animate {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animate.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Direction-specific transforms */
+.fade-in-up {
+    transform: translateY(40px);
+}
+
+.fade-in-down {
+    transform: translateY(-40px);
+}
+
+.fade-in-left {
+    transform: translateX(-40px);
+}
+
+.fade-in-right {
+    transform: translateX(40px);
+}
+
+.zoom-in {
+    transform: scale(0.85);
+}
+
+.scale-in {
+    transform: scale(0.9);
+}
+
+/* When visible, reset all transforms */
+.animate.visible {
+    transform: translateY(0) translateX(0) scale(1);
+}
+
+/* ===================================
+   Hero Section - Immediate animations
+   ================================= */
+.hero .hero-logo {
+    animation: heroLogoEnter 1s ease-out forwards;
+}
+
+.hero .hero-title {
+    opacity: 0;
+    animation: heroFadeIn 1s ease-out 0.2s forwards;
+}
+
+.hero .hero-subtitle {
+    opacity: 0;
+    animation: heroFadeIn 1s ease-out 0.4s forwards;
+}
+
+.hero .hero-description {
+    opacity: 0;
+    animation: heroFadeIn 1s ease-out 0.6s forwards;
+}
+
+.hero .hero-cta {
+    opacity: 0;
+    animation: heroFadeIn 1s ease-out 0.8s forwards;
+}
+
+@keyframes heroLogoEnter {
+    from {
+        opacity: 0;
+        transform: translateY(-30px) scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes heroFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===================================
+   Skill Bar Animation
+   ================================= */
+.skill-progress {
+    width: 0 !important;
+    transition: width 1.2s ease-out;
+}
+
+.skills-category.visible .skill-progress {
+    width: var(--skill-width, 80%) !important;
+}
+
+/* ===================================
+   Timeline Animation
+   ================================= */
+.timeline-item.visible .timeline-content {
+    animation: slideIn 0.6s ease-out forwards;
+}
+
+.timeline-item.visible .timeline-dot {
+    animation: dotPulse 0.6s ease-out forwards;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes dotPulse {
+    0% {
+        transform: scale(0);
+    }
+
+    50% {
+        transform: scale(1.3);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* ===================================
+   Staggered Children
+   ================================= */
+.stagger-children.visible>*:nth-child(1) {
+    transition-delay: 0.1s;
+}
+
+.stagger-children.visible>*:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+.stagger-children.visible>*:nth-child(3) {
+    transition-delay: 0.3s;
+}
+
+.stagger-children.visible>*:nth-child(4) {
+    transition-delay: 0.4s;
+}
+
+.stagger-children.visible>*:nth-child(5) {
+    transition-delay: 0.5s;
+}
+
+/* ===================================
+   Card Hover Effects
+   ================================= */
+.project-card,
+.training-card,
+.skills-category,
+.timeline-content,
+.featured-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.project-card:hover,
+.training-card:hover,
+.skills-category:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.timeline-content:hover {
+    transform: translateX(5px);
+    border-color: rgba(99, 102, 241, 0.5);
+}
+
+/* ===================================
+   Button Effects
+   ================================= */
+.btn-primary {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+}
+
+.btn-secondary:hover {
+    border-color: var(--accent-primary);
+    transform: translateY(-3px);
+}
+
+/* ===================================
+   Logo Hover
+   ================================= */
+.hero-logo-img:hover,
+.logo-img:hover {
+    animation: logoHover 0.5s ease-in-out;
+}
+
+@keyframes logoHover {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.08);
+    }
+}
+
+/* ===================================
+   Navbar
+   ================================= */
+.navbar {
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.navbar.scrolled {
+    background: rgba(10, 10, 15, 0.98);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* ===================================
+   Featured Badge Shine
+   ================================= */
+.featured-badge {
+    position: relative;
+    overflow: hidden;
+}
+
+.featured-badge::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    animation: shine 3s ease-in-out infinite;
+}
+
+@keyframes shine {
+
+    0%,
+    100% {
+        left: -100%;
+    }
+
+    50% {
+        left: 100%;
+    }
+}
+
+/* ===================================
+   Contact Form Fields
+   ================================= */
+.contact-form.visible .form-group,
+.contact-form.visible .btn-submit {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.contact-form .form-group,
+.contact-form .btn-submit {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.contact-form.visible .form-group:nth-child(1) {
+    transition-delay: 0.1s;
+}
+
+.contact-form.visible .form-group:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+.contact-form.visible .form-group:nth-child(3) {
+    transition-delay: 0.3s;
+}
+
+.contact-form.visible .form-group:nth-child(4) {
+    transition-delay: 0.4s;
+}
+
+.contact-form.visible .btn-submit {
+    transition-delay: 0.5s;
+}
