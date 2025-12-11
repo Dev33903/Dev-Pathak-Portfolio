@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50" width="200" height="50">
+  <defs>
+    <linearGradient id="logoGradientAnimated" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1">
+        <animate attributeName="stop-color" values="#6366f1;#8b5cf6;#6366f1" dur="3s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="50%" stop-color="#8b5cf6">
+        <animate attributeName="stop-color" values="#8b5cf6;#a78bfa;#8b5cf6" dur="3s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="100%" stop-color="#a78bfa">
+        <animate attributeName="stop-color" values="#a78bfa;#6366f1;#a78bfa" dur="3s" repeatCount="indefinite"/>
+      </stop>
+    </linearGradient>
+    
+    <linearGradient id="strokeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#a78bfa"/>
+    </linearGradient>
+  </defs>
+  
+  <style>
+    .pixel-block {
+      opacity: 0;
+      animation: pixelFadeIn 0.1s ease-out forwards;
+    }
+    
+    @keyframes pixelFadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.5);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    
+    .logo-text {
+      opacity: 0;
+      animation: textReveal 0.8s ease-out 1s forwards;
+    }
+    
+    @keyframes textReveal {
+      from {
+        opacity: 0;
+        transform: translateX(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    .logo-stroke {
+      stroke-dasharray: 300;
+      stroke-dashoffset: 300;
+      animation: strokeDraw 1.5s ease-out forwards;
+    }
+    
+    @keyframes strokeDraw {
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+    
+    svg:hover .pixel-block {
+      animation: pixelPulse 0.5s ease-in-out;
+    }
+    
+    @keyframes pixelPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+  </style>
+  
+  <!-- Pixel Icon with staggered animation -->
+  <g transform="translate(5, 8)">
+    <!-- Top row -->
+    <rect class="pixel-block" x="8" y="0" width="8" height="8" fill="#6366f1" style="animation-delay: 0.1s"/>
+    <rect class="pixel-block" x="16" y="0" width="8" height="8" fill="#7c3aed" style="animation-delay: 0.15s"/>
+    
+    <!-- Second row -->
+    <rect class="pixel-block" x="0" y="8" width="8" height="8" fill="#8b5cf6" style="animation-delay: 0.2s"/>
+    <rect class="pixel-block" x="8" y="8" width="8" height="8" fill="#a78bfa" style="animation-delay: 0.25s"/>
+    <rect class="pixel-block" x="16" y="8" width="8" height="8" fill="#6366f1" style="animation-delay: 0.3s"/>
+    <rect class="pixel-block" x="24" y="8" width="8" height="8" fill="#8b5cf6" style="animation-delay: 0.35s"/>
+    
+    <!-- Third row -->
+    <rect class="pixel-block" x="0" y="16" width="8" height="8" fill="#6366f1" style="animation-delay: 0.4s"/>
+    <rect class="pixel-block" x="8" y="16" width="8" height="8" fill="#8b5cf6" style="animation-delay: 0.45s"/>
+    <rect class="pixel-block" x="16" y="16" width="8" height="8" fill="#a78bfa" style="animation-delay: 0.5s"/>
+    <rect class="pixel-block" x="24" y="16" width="8" height="8" fill="#7c3aed" style="animation-delay: 0.55s"/>
+    
+    <!-- Bottom row -->
+    <rect class="pixel-block" x="8" y="24" width="8" height="8" fill="#7c3aed" style="animation-delay: 0.6s"/>
+    <rect class="pixel-block" x="16" y="24" width="8" height="8" fill="#6366f1" style="animation-delay: 0.65s"/>
+  </g>
+  
+  <!-- Animated underline stroke -->
+  <line class="logo-stroke" x1="50" y1="40" x2="180" y2="40" stroke="url(#strokeGradient)" stroke-width="2" fill="none"/>
+  
+  <!-- Text with reveal animation -->
+  <text class="logo-text" x="50" y="33" font-family="'Outfit', 'Inter', Arial, sans-serif" font-size="24" font-weight="700" fill="url(#logoGradientAnimated)">
+    Dev Pixel
+  </text>
+</svg>
